@@ -8,7 +8,7 @@ class Player(CircleShape):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
         self.radius = PLAYER_RADIUS
-        self.position = (x, y)
+        self.position = pygame.math.Vector2(x, y)
 
     # make player triangle
     def triangle(self):
