@@ -42,24 +42,29 @@ def main():
 
         updatable.update(dt)
 
+        # check if asteroids collide with player 
         for circ in asteroids:
             if circ.collides_with(player):
                 log_event("player_hit")
                 print("Game Over!")
                 sys.exit()
-
+        
+        # check if asteroids got shot
+        for aster in asteroids:
+            for bullet in shots:
+                if aster.collides_with(bullet):
+                    log_event("asteroid_shot")
+                    aster.kill()
+                    bullet.kill()
 
         for i in drawable:
             i.draw(screen)
-
-        
 
         pygame.display.flip()
 
         clock.tick(60)
         dt = clock.tick(60) / 1000
         
-
-
+        
 if __name__ == "__main__":
     main()
